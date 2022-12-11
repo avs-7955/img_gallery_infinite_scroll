@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery Infinite Scroll</title>
+    <title>Gallery</title>
     <!-- For Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <!-- Stylesheet -->
@@ -13,7 +13,21 @@
 </head>
 
 <body>
-
+    <!-- Title -->
+    <h1>Unsplash API - Infinite Scroll Gallery</h1>
+    <!-- Loader -->
+    <div class="loader" id="loader" hidden>
+        <img src="loader.svg" alt="Loading..." />
+    </div>
+    <!-- Image Container -->
+    <div class="image-container" id="image-container">
+        <img src="https://images.unsplash.com/photo-1651154104956-491b41e3eba1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM0fDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+            alt="" />
+        <img src="https://images.unsplash.com/photo-1669844777296-7319443f0e30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+            alt="" />
+        <img src="https://images.unsplash.com/photo-1669844777296-7319443f0e30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+            alt="" />
+    </div>
     <!-- Script -->
     <script src="script.js"></script>
 </body>
