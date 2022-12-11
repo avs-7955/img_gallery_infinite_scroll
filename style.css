@@ -1,0 +1,9 @@
+html{
+    box-sizing: border-box;
+    /* Prevents extra space and extra height to the page */
+}
+
+body{
+    margin: 0;
+    min-height: 100vh;
+}
