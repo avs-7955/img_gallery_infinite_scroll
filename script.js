@@ -1,4 +1,5 @@
 const image_container = document.getElementById('image-container')
+const loader = document.getElementById('loader')
 
 // For getting random pics using Picsum API
 const count = 10
@@ -15,6 +16,7 @@ function imgLoaded(){
     loaded++;
     if(loaded === total_img){
         ready = true
+        loader.hidden=true
         console.log('ready=',ready)
     }
 }
