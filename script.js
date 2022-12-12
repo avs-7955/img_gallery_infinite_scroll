@@ -1,9 +1,8 @@
 const image_container = document.getElementById('image-container')
 
-
-//Picsum API
-const count = 5
-const api_url = `https://picsum.photos/v2/list?limit=${count}`
+// For getting random pics using Picsum API
+const count = 10
+let page = 0
 
 let pic_array = []
 
@@ -41,6 +40,8 @@ function displayPhotos(){
 // Get photos from Picsum API
 async function getPhotos(){
     try{
+        page = Math.floor(Math.random(0,1)*34)
+        const api_url = `https://picsum.photos/v2/list?page=${page}&limit=${count}`
         const response = await fetch(api_url)
         pic_array = await response.json()
         console.log(pic_array)
@@ -50,29 +51,12 @@ async function getPhotos(){
     }
 }
 
+// If scrolling near the bottom of page, load new images
+window.addEventListener('scroll',() =>{
+    if(window.scrollY + window.innerHeight >= document.body.offsetHeight - 1000){
+        getPhotos()
+    } 
+})
+
 //On load
 getPhotos()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Unsplash API
-
-// const count = 5;
-// const api_key = '';
-// const api_url = 'https://api.unsplash.com/photos/random?client_id=${api_key}&count=${count}';
