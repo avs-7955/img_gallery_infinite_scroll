@@ -2,7 +2,7 @@ const image_container = document.getElementById('image-container')
 const loader = document.getElementById('loader')
 
 // For getting random pics using Picsum API
-const count = 10
+let count = 5; // Low count for initial load
 let page = 0
 let ready = false;
 let loaded = 0;
@@ -16,6 +16,7 @@ function imgLoaded(){
     if(loaded === total_img){
         ready = true
         loader.hidden=true
+        count = 30 //Increasing count after initial load
     }
 }
 
