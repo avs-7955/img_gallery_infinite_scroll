@@ -3,8 +3,21 @@ const image_container = document.getElementById('image-container')
 // For getting random pics using Picsum API
 const count = 10
 let page = 0
+let ready = false;
+let loaded = 0;
+let total_img = 0;
 
 let pic_array = []
+
+// Check if all the images are loaded
+function imgLoaded(){
+    console.log('imgLoaded')
+    loaded++;
+    if(loaded === total_img){
+        ready = true
+        console.log('ready=',ready)
+    }
+}
 
 // Helper function to set attributes
 function setAttributes(element, attributes){
@@ -15,6 +28,10 @@ function setAttributes(element, attributes){
 
 // Create elements for links and pics and add to DOM
 function displayPhotos(){
+    loaded = 0
+    total_img = pic_array.length
+    console.log('total',total_img)
+
     pic_array.forEach((photo) =>{
         // Creating <a> to link to the Unsplash website
         const item = document.createElement('a')
@@ -29,6 +46,9 @@ function displayPhotos(){
             src:photo.download_url,
             title:`Credits: ${photo.author}`
         })
+
+        // Event listener to check if all the images have loaded.
+        img.addEventListener('load',imgLoaded)
         
         // Put <img> inside <a>, then put <a> inside Image Container.
         item.appendChild(img)
@@ -44,7 +64,6 @@ async function getPhotos(){
         const api_url = `https://picsum.photos/v2/list?page=${page}&limit=${count}`
         const response = await fetch(api_url)
         pic_array = await response.json()
-        console.log(pic_array)
         displayPhotos()
     } catch(error){
         // Catch errors here
@@ -53,7 +72,8 @@ async function getPhotos(){
 
 // If scrolling near the bottom of page, load new images
 window.addEventListener('scroll',() =>{
-    if(window.scrollY + window.innerHeight >= document.body.offsetHeight - 1000){
+    if(window.scrollY + window.innerHeight >= document.body.offsetHeight - 1000 && ready){
+        ready = false
         getPhotos()
     } 
 })
