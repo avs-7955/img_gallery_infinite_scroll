@@ -12,12 +12,10 @@ let pic_array = []
 
 // Check if all the images are loaded
 function imgLoaded(){
-    console.log('imgLoaded')
     loaded++;
     if(loaded === total_img){
         ready = true
         loader.hidden=true
-        console.log('ready=',ready)
     }
 }
 
@@ -32,7 +30,6 @@ function setAttributes(element, attributes){
 function displayPhotos(){
     loaded = 0
     total_img = pic_array.length
-    console.log('total',total_img)
 
     pic_array.forEach((photo) =>{
         // Creating <a> to link to the Unsplash website
